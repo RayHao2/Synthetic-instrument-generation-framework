@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['frozen-hollows-83482.herokuapp.com', '127.0.0.1', ]
 # Application definition
 
 INSTALLED_APPS = [
-    # 'jquery',
+    'jquery',
     'home',
     'django.contrib.admin',
     'django.contrib.auth',
