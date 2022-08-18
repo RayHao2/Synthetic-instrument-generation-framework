@@ -5,3 +5,8 @@
 .show{
     display: contents;
 }
+
+
+.body{
+    background-color: red;
+}
