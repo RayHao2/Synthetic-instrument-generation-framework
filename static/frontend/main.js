@@ -1,11 +1,15 @@
 const audioBox = document.getElementById('audio-box') //get the div audio-box
 const audioBox2 = document.getElementById('audio-box-2')
+// set a max and min for giving out random number of audio 
 let max = 7
 let min = 1
-
+// get dom obejcts 
 var sumbitbutton = document.getElementById('sumbitbutton')
 var ids = document.getElementById('ids')
-//function that sumbit a form of user chocing audiovar 
+
+
+
+//create a form that create a form that display selection 
 function createForm(first,second){
     console.log("first,second",first,second)
     ids.innerHTML = 
@@ -78,7 +82,7 @@ const handleGetData = (first,second) =>{
 const startButton = document.getElementById("startButton")
 const mainDiv = document.getElementById("hidden")
 
-//starting the rating progcess
+//starting the rating progress 
 startButton.addEventListener('click', ()=>{
     console.log("start button clicked")
     mainDiv.classList.remove("hidden")
@@ -96,31 +100,6 @@ startButton.addEventListener('click', ()=>{
 })
 
 
-//Stop Refresh page when form submited
-
-
-// var form = document.getElementById("selectForm");
-// form.addEventListener('submit', function (event) {
-//         // event.currentTarget.submit()
-//         // event.preventDefault();
-//         // do other stuff when the user submits a form
-//         first = Math.floor(Math.random() * (max-min) + min)
-//         second = Math.floor(Math.random() * (max-min) + min)
-//         handleGetData(first,second)
-//         createForm(first,second)
-
-// });
-
-
-
-// // function handleForm(event) { event.preventDefault(); } 
-//  sumbitbutton.addEventListener('click',  (event)=>{
-//     console.log("submit button clicked")
-//     createForm(first,second)
-// })
-
-//using ajax to achice 
-
 
 $(document).on('submit', '#selectForm', function(e){
     e.preventDefault();
@@ -135,6 +114,7 @@ $(document).on('submit', '#selectForm', function(e){
             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
 
         },
+        // function that would repeat after successful submission 
         success:function(){
             console.log("====submit successfully")
             first = Math.floor(Math.random() * (max-min) + min)

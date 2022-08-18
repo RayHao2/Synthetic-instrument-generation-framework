@@ -23,7 +23,7 @@ def index(request):
 
 
 
-#class that handle json response from website(button click)
+#class that handle json response from website(when the next button clicked, send a json request to get object from DB)
 class PostJsonListView(View):
     def get(self, *args, **kwargs):
         # print(kwargs)
@@ -31,13 +31,6 @@ class PostJsonListView(View):
         first = kwargs.get('first') 
         second = kwargs.get('second')
         #get audio object accrdoing to the variable pass in
-
-        # firstAudio = list(audio.objects.values()[first:first+1])
-        # secondAudio = list(audio.objects.values()[second:second+1])
-
-        # firstAudio = serializers.serialize("json", audio.objects.filter(instrumentId=first).values())
-        # secondAudio = serializers.serialize("json", audio.objects.filter(instrumentId=second).values())
-
         firstAudio = list(audio.objects.filter(instrumentId=first).values())
         secondAudio = list(audio.objects.filter(instrumentId=second).values())
 
@@ -74,7 +67,7 @@ def submit(request):
         print("=== selcted ids: " + ids)
 
         # create obejct for model
-        if first == ids: #first got selected
+        if first == ids: #first got selected, create a rate object according to selection and save it
             rateSelected = rate.objects.create(instrumentID_id = first, ip_address = ip, rates = 1)
             rateNotSelected = rate.objects.create(instrumentID_id = second, ip_address = ip, rates = 0)
             rateSelected.save()
@@ -84,7 +77,7 @@ def submit(request):
             rateNotSelected = rate.objects.create(instrumentID_id = first, ip_address = ip, rates = 0)
             rateSelected.save()
             rateNotSelected.save()
-            # how to generate an forgein according to id
+      
 
 
     else:
